@@ -1,5 +1,5 @@
 import React from 'react';
-import { Login, GeneralForm, FormViewer } from './components';
+import { Login, GeneralForm, FormViewer,NotFound } from './components';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PrivateRoute from './components/navigation/PrivateRoute';
 
@@ -12,6 +12,7 @@ function App() {
         <Route element={<PrivateRoute />}>
           <Route path="/view-forms" element={<FormViewer />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );

@@ -3,26 +3,13 @@ import apiForms from '../services/apiForms'
 import apiUser from '../services/apiUser'
 import { formValidation } from "./validation/validateForm";
 import "./GeneralForm.css"
-import {
-  Button,
-  TextField,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  IconButton,
-  Typography,
-  Container,
-  Box,
-} from "@mui/material";
+import {Button,TextField,Select,MenuItem,FormControl,InputLabel,IconButton,Typography,Container,Box} from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import axios from "axios";
-import Navbar from "./navigation/Nav";
 import { useNavigate, useLocation } from "react-router-dom";
 import Alert from "@mui/material/Alert";
 
-// Sign up page for admin
+
 export default function GeneralForm({domain}) {
   const [errorMessage, setErrorMessage] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
@@ -124,10 +111,10 @@ export default function GeneralForm({domain}) {
     getQuestions();
   }, [formName]);
 
-  useEffect(() => {
-    console.log("Questions", questions);
-    console.log("Form Data", formData);
-  }, [questions]);
+  // useEffect(() => {
+  //   console.log("Questions", questions);
+  //   console.log("Form Data", formData);
+  // }, [questions]);
 
   const togglePasswordVisiblity = () => {
     setPasswordShown(!passwordShown);
@@ -142,9 +129,10 @@ export default function GeneralForm({domain}) {
     else {
       try
       { 
-        const response = await apiUser.register(formData);
-        if(formName === "Register")
+        if(formName === "Register"){
+            await apiUser.register(formData);
             navigate("/");
+        }
 
       }
       catch(err){

@@ -1,0 +1,31 @@
+/* src/components/pages/notfound/NotFound.css */
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding: 1rem; /* Equivalent to padding={2} in MUI */
+}
+
+.not-found-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.not-found-title {
+  font-size: 2rem;
+  margin-bottom: 1rem; /* Equivalent to gutterBottom */
+}
+
+.not-found-text {
+  font-size: 1.5rem !important;
+  margin-bottom: 1rem; /* Equivalent to gutterBottom */
+}
+
+.not-found-button {
+  width: 12.5rem; /* Equivalent to 200px */
+  height: 5.125rem; /* Equivalent to 50px */
+  margin-top: 1.5rem !important;
+}

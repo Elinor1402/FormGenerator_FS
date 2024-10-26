@@ -45,8 +45,8 @@ export default function FormViewer ()  {
 
     return (
        <>
+       <LogoutIcon onClick={logOut}  style={{ fontSize: '2.25rem', cursor: 'pointer' }}/>
         <Container maxWidth="lg">
-        <LogoutIcon onClick={logOut}  style={{ fontSize: '2.25rem', cursor: 'pointer' }}/>
          <Typography variant="h4" className="title">Form Searcher</Typography>
         {errorMessage === "" ? (
             <>
