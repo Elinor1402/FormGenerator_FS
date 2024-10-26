@@ -1,0 +1,33 @@
+.navbar {
+  background-color: #3f51b5; /* Set the navbar background color */
+  margin-bottom: 0px;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar-logo-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  color: white;
+  text-decoration: none;
+  padding: 0 1rem;
+  font-size: 1rem;
+}
+
+.nav-item:hover .nav-links {
+  color: #ffeb3b; /* Change color on hover */
+}

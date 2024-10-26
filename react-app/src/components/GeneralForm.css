@@ -1,0 +1,103 @@
+/* General styles */
+.title {
+  text-align: center;
+  margin-bottom: 1.25rem; /* 20px / 16 */
+  color: #4a90e2;
+  margin-top: 3rem !important;
+  font-weight: 600 !important;
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "PT Sans", sans-serif;
+}
+
+/* Center button */
+.btn {
+  display: flex;
+  justify-content: center;
+  gap: 6.25rem; /* 100px to rem */
+}
+
+/* Form styles */
+.form {
+  margin-top: 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 0.9375rem; /* 15px to rem */
+  padding-left: 0.625rem; /* 10px to rem */
+  padding-right: 0.625rem; /* 10px to rem */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.625rem; /* 10px to rem */
+}
+
+label {
+  font-size: 1.1rem;
+  width: 100%;
+  text-align: left;
+  padding-right: 1.25rem; /* 20px to rem */
+  margin-bottom: 0.625rem; /* 10px to rem */
+}
+
+input,
+select {
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+  background-color: #fff;
+  color: black;
+  border: 0.0625rem solid rgb(199, 199, 199); /* 1px to rem */
+  border-radius: 0.25rem; /* 4px to rem */
+  margin-bottom: 2%;
+  font-size: 1.2rem;
+  transition: all 250ms ease-in-out;
+  padding: 0.8em;
+  text-align: center;
+}
+
+input[type="date"] {
+  color: rgb(117, 109, 109);
+}
+
+input:hover {
+  background-color: white;
+  box-shadow: 0px 0px 0.875rem 0.01875rem; /* 14px and 0.3px to rem */
+}
+
+input:focus {
+  outline: none;
+  background-color: rgb(238, 238, 238);
+  box-shadow: 0px 0px 0.75rem 0.05rem; /* 12px and 0.8px to rem */
+}
+
+input:required:invalid {
+  border-color: #c00000;
+}
+
+
+/* Error message styles */
+.error {
+  display: flex;
+  justify-content: center;
+  font-size: 1rem; /* 16px to rem */
+  color: red;
+}
+
+i {
+  font-size: 1.75rem;
+  padding-left: 0.5em;
+}
+
+.form-title {
+  text-align: center;
+  margin-top: 1.25rem; /* 20px / 16 = 1.25rem */
+}

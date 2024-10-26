@@ -1,0 +1,56 @@
+services:
+  react_app:
+    container_name: react_app
+    image: node:18-alpine
+    build: ./react-app
+    ports:
+      - "3001:3001"
+    environment:
+      - EXTERNAL_PORT=3000
+      - PGUSER=${POSTGRES_USER}
+      - PGPASSWORD=${POSTGRES_PASSWORD} # Removed space after '='
+      - PGDATABASE=${POSTGRES_DB}
+      - PGHOST=${POSTGRES_HOST} # NAME OF THE SERVICE
+      - PGPORT=${POSTGRES_PORT}
+
+    depends_on:
+      - postgress_db
+  node_server:
+    container_name: node_server
+    image: node:18-alpine
+    build:
+      context: ./node-backend
+    ports:
+      - "3000:3000"
+    environment:
+      - EXTERNAL_PORT=3000
+      - PGUSER=${POSTGRES_USER}
+      - PGPASSWORD=${POSTGRES_PASSWORD} # Removed space after '='
+      - PGDATABASE=${POSTGRES_DB}
+      - PGHOST=${POSTGRES_HOST} # NAME OF THE SERVICE
+      - PGPORT=${POSTGRES_PORT}
+    depends_on:
+      postgress_db:
+        condition: service_started
+        required: true
+
+  postgress_db:
+    container_name: postgress_db
+    image: postgres:12
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD} # Removed space after '='
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - ./postgress/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./postgress/answers.csv:/docker-entrypoint-initdb.d/answers.csv
+      - ./postgress/atoq.csv:/docker-entrypoint-initdb.d/atoq.csv
+      - ./postgress/q_appearance.csv:/docker-entrypoint-initdb.d/q_appearance.csv
+      - ./postgress/qtoa.csv:/docker-entrypoint-initdb.d/qtoa.csv
+      - ./postgress/questions.csv:/docker-entrypoint-initdb.d/questions.csv
+
+networks:
+  default:
+    name: formsgenerator_default

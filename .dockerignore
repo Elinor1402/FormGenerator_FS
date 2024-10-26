@@ -1,0 +1,11 @@
+node-backend/node_modules/
+react-app/node_modules/
+.git
+.gitignore
+node-backend/Dockerfile/
+react-app/Dockerfile/
+Dockerfile
+docker-compose.yml
+build
+dist
+
