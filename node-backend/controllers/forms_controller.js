@@ -7,7 +7,6 @@ const getFormData = async function (req, res) {
         console.log("Amswer", answer);
 
         // Query to fetch all required data using joins
-        // Query to fetch all required data using joins
         const query = `
         SELECT
         q.id AS question_id,
@@ -30,14 +29,12 @@ const getFormData = async function (req, res) {
         const result = await DB.query(query, [answer]);
         const rows = result.rows;
 
-        // console.log("Result", rows);
         // Process the result to group answers by question
         const questionsMap = {};
         rows.forEach((row) => {
             const questionId = row.question_id;
             if (!questionsMap[questionId]) {
                 questionsMap[questionId] = {
-                    //id: questionId,
                     question: row.question,
                     page: row.page,
                     answerType: row.answer_type,
@@ -46,37 +43,11 @@ const getFormData = async function (req, res) {
             }
             if (row.answer_type === 2) {
                 questionsMap[questionId].answers.push({
-                    //answer_id: row.answer_id,
                     answer: row.answer,
                 });
             }
         });
-        //   // Build the JSONB object for answers
-        //   const answersJson = {};
-        //   for (const [questionId, questionData] of Object.entries(questionsMap)) {
-        //     let answer;
-        //     if (questionData.answerType === 2 && questionData.answers.length > 0) {
-        //       answer = questionData.answers[0].answer; // Get the first answer
-        //     } else if (questionData.answerType === 1) {
-        //       answer = ""; // Insert an empty string for answerType 1
-        //     } else {
-        //       continue; // Skip if there are no relevant answers to insert
-        //     }
-        //     answersJson[questionData.question] = answer;
-        //   }
-        //   const query2 = "SELECT user_id FROM users_answers WHERE user_id = $1";
-        //   const values = [userID];
-        //   const res = await pool.query(query2, values);
-
-        //   if (res.rows.length <= 0) {
-        //     const insertQuery = `
-        //     INSERT INTO users_answers (user_id, answers)
-        //     VALUES ($1, $2::jsonb)
-        //     ON CONFLICT (user_id) DO UPDATE SET answers = users_answers.answers || EXCLUDED.answers;
-        //   `;
-        //     await pool.query(insertQuery, [userID, answersJson]);
-        //   }
-
+    
         // Convert the map to a list
         const finalResult = Object.values(questionsMap);
         console.log(finalResult);
